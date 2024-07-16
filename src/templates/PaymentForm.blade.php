@@ -7,10 +7,10 @@
 </head>
 <body>
     <form id="targobankForm" action="https://www.targobank.de/de/app/indirectloanrequest.html" method="POST" target="_blank">
-        <input type="hidden" name="koop_id" value="{{ config('targobank.koopID') }}">
+        <input type="hidden" name="koop_id" value="{{ koop_id }}">
         <input type="hidden" name="sessionID" value="xyz">
         <input type="hidden" name="amount" value="{{ amount }}">
-        <input type="hidden" name="dealerID" value="{{ config('targobank.dealerID') }}">
+        <input type="hidden" name="dealerID" value="{{ dealer_id }}">
         <input type="hidden" name="dealerText" value="https://villamoebel.de/return">
         <input type="hidden" name="documentno" value="{{ documentno }}">
         <input type="hidden" name="dealerShopURL" value="https://villamoebel.de/success">
@@ -32,7 +32,7 @@
 
     <script>
         window.onload = async function() {
-            const queryString = `amount={{ amount }}&koop_id={{ config('targobank.koopID') }}&dealerText=https%3A%2F%2Fvillamoebel.de%2Freturn&documentno={{ documentno }}`;
+            const queryString = `amount={{ amount }}&koop_id={{ koop_id }}&dealerText=https%3A%2F%2Fvillamoebel.de%2Freturn&documentno={{ documentno }}`;
             const response = await fetch(`/generate-hash?queryString=${encodeURIComponent(queryString)}`);
             const data = await response.json();
             document.getElementById('hash').value = data.hash;
