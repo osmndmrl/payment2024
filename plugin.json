@@ -1,30 +1,24 @@
 {
-    "name": "TARGOBANK Payment Plugin",
-    "namespace": "YourCompanyName",
-    "type": "payment",
-    "author": "Osman Demirel - Sedel Kaya",
-    "email": "your-email@example.com",
+    "name": "TargobankPayment",
+    "author": "Omsan Demirel - Sedel Kaya",
+    "email": "osmandemirel735@gmail.com",
     "version": "1.0.0",
-    "description": {
-      "en": "A payment plugin for integrating TARGOBANK with PlentyMarkets.",
-      "de": "Ein Zahlungs-Plugin zur Integration von TARGOBANK mit PlentyMarkets."
-    },
-    "keywords": ["payment", "targobank", "plentymarkets"],
-    "require": {
-      "plentymarkets/plugin-interface": ">=0.1.0"
-    },
-    "pluginMetaData": {
-      "shopBuilder": {
-        "enabled": true,
-        "dataProvider": "Digiloop\\Targobank\\Providers\\PaymentDataProvider",
-        "paymentMethod": {
-          "name": {
-            "en": "TARGOBANK Financing",
-            "de": "TARGOBANK Finanzierung"
-          },
-          "key": "targobank_financing"
+    "namespace": "TargobankPayment",
+    "type": "payment",
+    "serviceProvider": "TargobankPayment\\TargobankPaymentServiceProvider",
+    "pluginIcon": "icon.png",
+    "paymentMethods": [
+      {
+        "pluginKey": "targobank",
+        "name": {
+          "de": "TARGOBANK Finanzierung",
+          "en": "TARGOBANK Financing"
+        },
+        "description": {
+          "de": "Zahlen Sie sicher und bequem mit TARGOBANK.",
+          "en": "Pay securely and conveniently with TARGOBANK."
         }
       }
-    }
+    ]
   }
   

@@ -7,12 +7,12 @@
 </head>
 <body>
     <form id="targobankForm" action="https://www.targobank.de/de/app/indirectloanrequest.html" method="POST" target="_blank">
-        <input type="hidden" name="koop_id" value="villastore241">
+        <input type="hidden" name="koop_id" value="{{ config('targobank.koopID') }}">
         <input type="hidden" name="sessionID" value="xyz">
-        <input type="hidden" name="amount" value="499.99">
-        <input type="hidden" name="dealerID" value="804625">
+        <input type="hidden" name="amount" value="{{ amount }}">
+        <input type="hidden" name="dealerID" value="{{ config('targobank.dealerID') }}">
         <input type="hidden" name="dealerText" value="https://villamoebel.de/return">
-        <input type="hidden" name="documentno" value="order12345">
+        <input type="hidden" name="documentno" value="{{ documentno }}">
         <input type="hidden" name="dealerShopURL" value="https://villamoebel.de/success">
         <input type="hidden" name="dealerRejectURL" value="https://villamoebel.de/reject">
         <input type="hidden" name="dealerAbortURL" value="https://villamoebel.de/abort">
@@ -32,7 +32,7 @@
 
     <script>
         window.onload = async function() {
-            const queryString = "amount=499.99&koop_id=villastore241&dealerText=https%3A%2F%2Fvillamoebel.de%2Freturn&documentno=order12345";
+            const queryString = `amount={{ amount }}&koop_id={{ config('targobank.koopID') }}&dealerText=https%3A%2F%2Fvillamoebel.de%2Freturn&documentno={{ documentno }}`;
             const response = await fetch(`/generate-hash?queryString=${encodeURIComponent(queryString)}`);
             const data = await response.json();
             document.getElementById('hash').value = data.hash;

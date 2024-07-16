@@ -1,20 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
-const path = require('path');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+function generateHash(queryString, secret) {
+    return crypto.createHmac('sha256', secret).update(queryString).digest('hex');
+}
 
-app.get('/generate-hash', (req, res) => {
-    const queryString = req.query.queryString;
-    const secret = "your_secret_key"; // Gerçek gizli anahtarınızı buraya ekleyin
-    const hash = crypto.createHmac('sha256', secret).update(queryString).digest('hex');
+app.post('/generate-hash', (req, res) => {
+    const { queryString, secret } = req.body;
+    const hash = generateHash(queryString, secret);
     res.json({ hash });
 });
 

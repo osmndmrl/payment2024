@@ -1,14 +1,14 @@
 {
-  "name": "targobank-integration",
+  "name": "server",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Osman Demirel - Sedel Kaya",
+  "author": "",
   "license": "ISC",
-  "description": "Targobank Payment",
+  "description": "",
   "dependencies": {
     "body-parser": "^1.20.2",
     "crypto": "^1.0.1",
